@@ -7,3 +7,4 @@ class Post {
       this.body = body;
     }
 }
+export default Post;
