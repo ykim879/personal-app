@@ -1,22 +1,14 @@
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
-import PostView from './src/PostView';
-import { firstADP, secondADP, internship } from './src/workexperience/WorkPostData';
-import { LinearGradient } from 'expo-linear-gradient';
+import WorkExperienceView from './src/PostView';
 import colors from './themecolor';
 
 export default function App() {
   return (
     <ScrollView style={styles.container}>
-        <LinearGradient
-        colors={[colors.darkPink, colors.white]} // Replace with the exact color codes you want
-        style={styles.gradientBackground}>
       <View style={styles.header}>
         <Text style={styles.headerText}>Beauty</Text>
       </View>
-    <PostView post= {secondADP}/>
-    <PostView post= {firstADP}/>
-    <PostView post= {internship}/>
-    </LinearGradient>
+    <WorkExperienceView />
     </ScrollView>
   );
 }
@@ -24,15 +16,15 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.white,
-  },
-  gradientBackground: {
-    flexGrow: 1,
+    backgroundColor: colors.background,
   },
   header: {
-    padding: 20,
+    padding: 25,
     alignItems: "center",
-    // Add additional styling for your header
+    backgroundColor: colors.brown,
+    marginBottom: 15,
+    borderBottomLeftRadius: 100,
+    borderBottomRightRadius: 100,
   },
   headerText: {
     fontSize: 24,

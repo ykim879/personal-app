@@ -1,78 +1,68 @@
-import React from "react";
-import { StyleSheet, View, Text, Image, FlatList } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import colors from "../themecolor";
+import Card from "./card/Card";
+import { firstADP, works } from "./workexperience/WorkPostData";
+import { shadowStyle } from "./Styles";
 
-function header(post) {
-    return (
-        <View>
-            <Text style={styles.cardTitle}>{post.headline}</Text>
-        <Text style={styles.date}>
-          {post.effectiveFrom} - {post.effectiveTo}
-        </Text>
-        </View>
-    );
-} 
 //Todo: do glassmorphism in css
-const PostView = ({ post }) => {
-  //Todo make it only do once
-  const fallback = require("./../assets/adp1.jpg");
+const WorkExperienceView = () => {
+    const [currentCardIndex, setCurrentCardIndex] = useState(0);
+
+    // Function to handle pressing the left button
+    const handleLeftPress = () => {
+      setCurrentCardIndex(prevIndex => prevIndex > 0 ? prevIndex - 1 : prevIndex);
+    };
+  
+    // Function to handle pressing the right button
+    const handleRightPress = () => {
+      setCurrentCardIndex(prevIndex => prevIndex < 2 ? prevIndex + 1 : prevIndex);
+    };
 
   return (
-    <View style={styles.card}>
-      <Image source={post.img ? post.img : fallback} style={styles.cardImage} />        
-        <FlatList style={styles.cardContent}
-          data={post.body}
-          renderItem={({ item }) => (
-            <View>
-              <Text style={styles.cardText}>{`\u2022 ${item}`}</Text>
-            </View>
-          )}
-          ListHeaderComponent={header(post)}
-        />
+    <View style={styles.container}>
+      <Card post={works.at(currentCardIndex)} />
+      <View style={[styles.buttonContainer]}>
+        <TouchableOpacity onPress={handleLeftPress} style={[styles.button, shadowStyle.shadow]}>
+          <Text style={styles.buttonText}>{"<"}</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={handleRightPress} style={[styles.button, shadowStyle.shadow]}>
+          <Text style={styles.buttonText}>{">"}</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  card: {
-    margin: 15,
-    borderRadius: 15,
-    backgroundColor: colors.white, 
-    // React Native does not support boxShadow in the same way as CSS.
-    // You can approximate it using elevation for Android, and shadow properties for iOS.
-    // elevation: 20,  Increased elevation for a more pronounced shadow on Android
-    shadowColor: 'black', // Darker shadow color for iOS
-    shadowOffset: { width: 10, height: 10 }, // Shadow offset for iOS
-    shadowOpacity: 0.56, // Increased shadow opacity for iOS
-    shadowRadius: 15, // Shadow radius for iOS
-    overflow: "hidden",
-    // Add shadows and other styling to match the screenshot
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: 'space-between', 
   },
-  cardImage: {
-    width: "100%",
-    height: 200,
-    // Adjust as necessary to fit the card
+  buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    position: "absolute",
+    bottom: 15,
+    left: 0,
+    right: 0,
   },
-  cardContent: {
-    padding: 15,
-    // Add additional styling for your card content
+  button: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    backgroundColor: "#FFF",
+    justifyContent: "center",
+    alignItems: "center",
+    marginHorizontal: 20,
   },
-  cardTitle: {
-    fontSize: 18,
-    fontWeight: "bold",
-    // Add additional styling for your card title
-  },
-  cardText: {
-    fontSize: 14,
-    color: colors.darkGrey,
-    marginTop: 10,
-    // Add additional styling for your card text
-  },
-  date: {
-    fontSize: 12,
-    color: "#6D6D6D",
-    // Add additional styling for your card author
+  buttonText: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: colors.brown,
   },
 });
 
-export default PostView;
+export default WorkExperienceView;

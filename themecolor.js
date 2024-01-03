@@ -1,9 +1,9 @@
 // colors.js
 const colors = {
-    white: '#FFFFFF',
-    pink: '#FBEFFB',
-    darkPink: '#FFC0CB', 
-    grey: '#6D6D6D',
+    white: '#f8f1e9',
+    background: '#d8c8b8',
+    brown: '#8d7966', 
+    grey: '#a8a39d',
     darkGrey: '#333',
   };
   
