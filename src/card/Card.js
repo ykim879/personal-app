@@ -18,7 +18,7 @@ const Card = ({ post }) => {
     const fallback = require("./../../assets/adp1.jpg");
     
   return (
-    <View style={[styles.card, shadowStyle.shadow]}>
+    <View style={[styles.card, ,shadowStyle.shadow]}>
       <Image source={post.img ? post.img : fallback} style={styles.cardImage} />
       <FlatList
         style={styles.cardContent}
