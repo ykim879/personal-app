@@ -4,7 +4,7 @@ import colors from "../themecolor";
 import Card from "./card/Card";
 import { shadowStyle } from "./Styles";
 
-//Todo: do glassmorphism in css
+//Todo: make a link 
 const PostView = (props) => {
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const diplayPosts = props.posts;
@@ -70,7 +70,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "space-between",
   },
   buttonContainer: {
     flexDirection: "row",

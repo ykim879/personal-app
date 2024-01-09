@@ -18,16 +18,14 @@ const Card = ({ post }) => {
     const fallback = require("./../../assets/adp1.jpg");
     
   return (
-    <View style={[styles.card, ,shadowStyle.shadow]}>
+    <View style={[styles.card]}>
       <Image source={post.img ? post.img : fallback} style={styles.cardImage} />
       <FlatList
         style={styles.cardContent}
         data={post.body}
-        renderItem={({ item }) => (
-          <View>
+        renderItem={({ item }) => 
             <Text style={styles.cardText}>{`\u2022 ${item}`}</Text>
-          </View>
-        )}
+        }
         ListHeaderComponent={header(post)}
       />
     </View>

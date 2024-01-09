@@ -4,10 +4,13 @@ import colors from "../themecolor";
 import Icon from "react-native-vector-icons/Feather"; // Choose an icon library
 import PostView from "./PostView";
 import { works } from "./data/WorkPostData";
+import { universityLife } from "./data/CollegeLifeData";
 
 const Tab = createBottomTabNavigator();
 
 function AppTab() {
+  const WorkScreen = () => <PostView posts = {works}/>
+  const UniversityScreen = () => <PostView posts = {universityLife}/>
   return (
     <Tab.Navigator
       initialRouteName="Work"
@@ -20,7 +23,7 @@ function AppTab() {
     >
       <Tab.Screen
         name="Work"
-        component={() => <PostView posts={works}/>}
+        component={WorkScreen}
         options={{
           tabBarIcon: ({ focused }) => (
             <Icon
@@ -46,8 +49,8 @@ function AppTab() {
         }}
       />
       <Tab.Screen
-        name="SecondTab"
-        component={PostView}
+        name="University"
+        component={UniversityScreen}
         options={{
           tabBarIcon: ({ focused }) => (
             <Icon
