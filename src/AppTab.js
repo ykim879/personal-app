@@ -5,6 +5,7 @@ import Icon from "react-native-vector-icons/Feather"; // Choose an icon library
 import PostView from "./PostView";
 import { works } from "./data/WorkPostData";
 import { universityLife } from "./data/CollegeLifeData";
+import ProjectStack from "./project/ProjectStack";
 
 const Tab = createBottomTabNavigator();
 
@@ -16,6 +17,7 @@ function AppTab() {
       initialRouteName="Work"
       screenOptions={{
         headerShown: false,
+        activeColor: colors.grey,
         tabBarShowLabel: false,
         tabBarStyle: { backgroundColor: colors.brown },
         paddingVertical: 30, // Add vertical padding
@@ -55,6 +57,19 @@ function AppTab() {
           tabBarIcon: ({ focused }) => (
             <Icon
               name="edit-2"
+              size={35}
+              color={focused ? colors.darkGrey : colors.grey}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Projects"
+        component={ProjectStack}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <Icon
+              name="paperclip"
               size={35}
               color={focused ? colors.darkGrey : colors.grey}
             />
