@@ -7,13 +7,12 @@ import {
   FlatList,
   Image
 } from "react-native";
+import { mobileApp1 } from "../data/ProjectsData";
 
 // Dummy data for categories and projects
 const categories = ["ALL", "WEBSITE", "MOBILE", "DESIGN"];
 const projects = [
-  { id: "1", icon: "🌂", category: "DESIGN" },
-  { id: "2", icon: "🔑", category: "MOBILE" },
-  // ...add all your projects here
+  mobileApp1
 ];
 
 const ProjectDisplay = ({ navigation }) => {
@@ -28,9 +27,9 @@ const ProjectDisplay = ({ navigation }) => {
       }
     >
       <Text style={styles.projectIcon}>{item.icon}</Text>
+      <Image source= {item.image} style={styles.image}/>
     </TouchableOpacity>
   );
-  const adp1 = require("./../../assets/adp1.jpg");
 
   return (
     <View style={styles.container}>
@@ -46,7 +45,7 @@ const ProjectDisplay = ({ navigation }) => {
         renderItem={renderProjectItem}
         keyExtractor={(item) => item.id}
         numColumns={2}
-        initialNumToRender = {projects.length}
+        columnWrapperStyle={styles.row} 
       />
     </View>
   );
@@ -71,11 +70,23 @@ const styles = StyleSheet.create({
   projectItem: {
     flex: 1,
     margin: 10,
-    maxHeight: 20,
-    // Style for the project item like height, width, etc.
+    width: 50,
+    height: 50,
   },
   projectIcon: {
     // Style for the project icon
+  },
+  row: {
+    flex: 1,
+    justifyContent: 'space-around',
+    marginBottom: 10, // Adjust the space between rows
+  },
+  itemContainer: {
+    
+  },
+  image: {
+    width: '100%',
+    height: '100%',
   },
 });
 export default ProjectDisplay;

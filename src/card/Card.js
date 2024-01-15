@@ -4,28 +4,28 @@ import colors from "../../themecolor";
 import { shadowStyle } from "../Styles";
 
 function header(post) {
-    return (
-      <View style={styles.header}>
-        <Text style={styles.cardTitle}>{post.headline}</Text>
-        <Text style={styles.date}>
-          {post.effectiveFrom} - {post.effectiveTo}
-        </Text>
-      </View>
-    );
-  }
+  return (
+    <View style={styles.header}>
+      <Text style={styles.cardTitle}>{post.headline}</Text>
+      <Text style={styles.date}>
+        {post.effectiveFrom} - {post.effectiveTo}
+      </Text>
+    </View>
+  );
+}
 
 const Card = ({ post }) => {
-    const fallback = require("./../../assets/adp1.jpg");
-    
+  const fallback = require("./../../assets/adp1.jpg");
+
   return (
     <View style={[styles.card]}>
       <Image source={post.img ? post.img : fallback} style={styles.cardImage} />
       <FlatList
         style={styles.cardContent}
         data={post.body}
-        renderItem={({ item }) => 
-            <Text style={styles.cardText}>{`\u2022 ${item}`}</Text>
-        }
+        renderItem={({ item }) => (
+          <Text style={styles.cardText}>{`\u2022 ${item}`}</Text>
+        )}
         ListHeaderComponent={header(post)}
       />
     </View>
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.grey,
   },
   card: {
-    marginHorizontal : 15,
+    marginHorizontal: 15,
     marginTop: 15,
     marginBottom: 80,
     borderRadius: 15,
