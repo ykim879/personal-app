@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -7,18 +7,14 @@ import {
   FlatList,
   Image
 } from "react-native";
-import { mobileApp1 } from "../data/ProjectsData";
+import { mobileApp1, mobileProject } from "../data/ProjectsData";
+import CategoryTab from "../categorytab/CategoryTab";
 
-// Dummy data for categories and projects
-const categories = ["ALL", "WEBSITE", "MOBILE", "DESIGN"];
-const projects = [
-  mobileApp1
-];
 
 const ProjectDisplay = ({ navigation }) => {
-  const img = require("./../../assets/adp1.jpg");
-  
-  //Todo: include image
+  //Todo: passing state
+  const [category, setCategory] = useState("ALL");
+  //Todo: image as a square and resize
   const renderProjectItem = ({ item }) => (
     <TouchableOpacity
       style={styles.projectItem}
@@ -33,15 +29,9 @@ const ProjectDisplay = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.categoryContainer}>
-        {categories.map((category) => (
-          <TouchableOpacity key={category} style={styles.categoryItem}>
-            <Text style={styles.categoryText}>{category}</Text>
-          </TouchableOpacity>
-        ))}
-      </View>
+      <CategoryTab category= {category} setCategory= {setCategory}/>
       <FlatList
-        data={projects}
+        data={mobileProject}
         renderItem={renderProjectItem}
         keyExtractor={(item) => item.id}
         numColumns={2}
@@ -54,18 +44,6 @@ const ProjectDisplay = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  categoryContainer: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    padding: 10,
-    backgroundColor: "white",
-  },
-  categoryItem: {
-    // Style for category item
-  },
-  categoryText: {
-    // Style for category text
   },
   projectItem: {
     flex: 1,

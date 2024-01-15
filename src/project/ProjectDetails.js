@@ -18,7 +18,7 @@ const projectDetail = {
   imageUrl: "path-to-your-image", // Replace with your image path or URL
 };
 
-const ProjectDetails = () => {
+const ProjectDetails = (props) => {
   return (
     <ScrollView style={styles.container}>
       <Image
