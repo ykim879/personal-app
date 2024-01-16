@@ -7,16 +7,15 @@ import {
 } from "react-native";
 
 import colors from "../../themecolor";
-
-const categories = ["ALL", "WEBSITE", "MOBILE", "DESIGN"];
+import { categories } from "../data/ProjectsData";
 
 const CategoryTab = (props) => {
     console.log(props.category)
     return (
         <View style={styles.categoryContainer}>
-        {categories.map((c) => (
-          <TouchableOpacity key={c} style={styles.categoryItem} onPress = {props.setCategory}>
-            <Text style={c === props.category ? styles.currentCategory : styles.categories}>{c}</Text>
+        { Object.entries(categories).map(([k,v]) => (
+          <TouchableOpacity key={v} style={styles.categoryItem} onPress = {() => props.setCategory(k)}>
+            <Text style={k === props.category ? styles.currentCategory : styles.categories}>{k}</Text>
           </TouchableOpacity>
         ))}
       </View>

@@ -7,7 +7,7 @@ import {
   FlatList,
   Image
 } from "react-native";
-import { mobileApp1, mobileProject } from "../data/ProjectsData";
+import { projectLayout } from "../data/ProjectsData";
 import CategoryTab from "../categorytab/CategoryTab";
 
 
@@ -31,7 +31,7 @@ const ProjectDisplay = ({ navigation }) => {
     <View style={styles.container}>
       <CategoryTab category= {category} setCategory= {setCategory}/>
       <FlatList
-        data={mobileProject}
+        data={projectLayout[category]}
         renderItem={renderProjectItem}
         keyExtractor={(item) => item.id}
         numColumns={2}
