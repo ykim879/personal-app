@@ -6,7 +6,7 @@ import PostView from "./PostView";
 import { works } from "./data/WorkPostData";
 import { universityLife } from "./data/CollegeLifeData";
 import ProjectStack from "./project/ProjectStack";
-
+import ArticleScreen from "./article/ArticleScreen";
 const Tab = createBottomTabNavigator();
 
 function AppTab() {
@@ -70,6 +70,19 @@ function AppTab() {
           tabBarIcon: ({ focused }) => (
             <Icon
               name="paperclip"
+              size={35}
+              color={focused ? colors.darkGrey : colors.grey}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Articles"
+        component={ArticleScreen}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <Icon
+              name="file-text"
               size={35}
               color={focused ? colors.darkGrey : colors.grey}
             />

@@ -1,4 +1,5 @@
-class Project {
+//Todo: move folder
+class GridItem {
     constructor(id, icon, category, image, body, link) {
       this.id = id;
       this.icon = icon;
@@ -8,4 +9,4 @@ class Project {
       this.link = link;
     }
 }
-export default Project;
+export default GridItem;

@@ -1,41 +1,23 @@
 import React, { useState } from "react";
 import {
   View,
-  Text,
-  TouchableOpacity,
   StyleSheet,
-  FlatList,
-  Image
 } from "react-native";
 import { projectLayout } from "../data/ProjectsData";
 import CategoryTab from "../categorytab/CategoryTab";
-
+import Grid from "../grid/Grid";
 
 const ProjectDisplay = ({ navigation }) => {
   //Todo: passing state
   const [category, setCategory] = useState("ALL");
   //Todo: image as a square and resize
-  const renderProjectItem = ({ item }) => (
-    <TouchableOpacity
-      style={styles.projectItem}
-      onPress={() =>
-        navigation.navigate("ProjectDetails", { projectId: item.id })
-      }
-    >
-      <Text style={styles.projectIcon}>{item.icon}</Text>
-      <Image source= {item.image} style={styles.image}/>
-    </TouchableOpacity>
-  );
 
   return (
     <View style={styles.container}>
       <CategoryTab category= {category} setCategory= {setCategory}/>
-      <FlatList
+      <Grid
         data={projectLayout[category]}
-        renderItem={renderProjectItem}
-        keyExtractor={(item) => item.id}
-        numColumns={2}
-        columnWrapperStyle={styles.row} 
+        cols={2}
       />
     </View>
   );
